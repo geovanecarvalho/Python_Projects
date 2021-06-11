@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-u)o4i=fsav_y5lt7j#ml)dgc!d3)166brg)-s7s3ehbt@(u4x*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0']
+# ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS=["*"]
 
 
 # Application definition
@@ -37,9 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'store.users'
     
     #my apps 
-    'users.apps.UsersConfig',
+   
 ]
 
 MIDDLEWARE = [
@@ -77,13 +79,18 @@ WSGI_APPLICATION = 'store.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER':'postgres',
-        'PASSWORD':'postgres',
-        'HOST':'db',
-        'PORT':5432,
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'postgres',
+    #     'USER':'postgres',
+    #     'PASSWORD':'postgres',
+    #     'HOST':'db',
+    #     'PORT':5432,
+    # }
+
+     'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -130,4 +137,5 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 AUTH_USER_MODEL='users.User'
